@@ -13,6 +13,11 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY package*.json ./
 COPY src ./src
 
+# The runtime never installs packages, so strip npm/yarn/corepack from the
+# final image — smaller attack surface and none of their bundled CVEs
+RUN rm -rf /usr/local/lib/node_modules /opt/yarn* \
+    /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/yarn /usr/local/bin/yarnpkg /usr/local/bin/corepack
+
 # Run as the unprivileged user shipped with the node image
 USER node
 
