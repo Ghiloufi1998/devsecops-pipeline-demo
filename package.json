@@ -19,7 +19,7 @@
   "author": "Wassim Ghiloufi <ghiloufiwassim@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "express": "^4.21.2",
